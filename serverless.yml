@@ -10,8 +10,12 @@ inputs:
     runtime: Nodejs12.16
     framework: koa
     name: ${name}
+    timeout: 30
+    memorySize: 128
   apigw:
-    ignoreUpdate: true
+    region: ap-beijing
+    timeout: 60
+    # ignoreUpdate: true
     protocols:
       - http
       - https
