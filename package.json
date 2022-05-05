@@ -1,0 +1,29 @@
+{
+  "name": "teslamate-proxy",
+  "version": "0.0.1",
+  "description": "Serverless proxy for teslamate",
+  "main": "sls.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tesla-data/teslamate-proxy.git"
+  },
+  "keywords": [
+    "tesla",
+    "teslamate",
+    "serverless"
+  ],
+  "author": "Tal (talrasha007@gmail.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tesla-data/teslamate-proxy/issues"
+  },
+  "homepage": "https://github.com/tesla-data/teslamate-proxy#readme",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "koa": "^2.13.4",
+    "koa-router": "^10.1.1"
+  }
+}

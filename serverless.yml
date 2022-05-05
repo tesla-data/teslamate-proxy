@@ -1,0 +1,17 @@
+component: http
+name: TeslamateProxy
+
+inputs:
+  src:
+    src: ./
+    exclude:
+      - .env
+  faas:
+    runtime: Nodejs12.16
+    framework: koa
+    name: ${name}
+  apigw:
+    ignoreUpdate: true
+    protocols:
+      - http
+      - https
