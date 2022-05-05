@@ -13,9 +13,10 @@ inputs:
     timeout: 30
     memorySize: 128
   apigw:
-    region: ap-beijing
     timeout: 60
     # ignoreUpdate: true
     protocols:
       - http
       - https
+  region: ap-beijing
+stage: prod
