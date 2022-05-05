@@ -7,7 +7,7 @@ inputs:
     exclude:
       - .env
   faas:
-    runtime: Nodejs12.16
+    runtime: Nodejs16.13
     framework: koa
     name: ${name}
     timeout: 30
