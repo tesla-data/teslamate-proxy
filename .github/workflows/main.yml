@@ -3,7 +3,7 @@ name: deploy serverless
 on: #监听的事件和分支配置
   push:
     branches:
-      - dev
+      - main
  
 jobs:
   deploy:
