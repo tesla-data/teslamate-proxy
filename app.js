@@ -10,6 +10,7 @@ function setRoute(method, path) {
 }
 
 setRoute('post', '/query');
+setRoute('get', '/teslafi');
 
 app.use(bodyParser()).use(router.allowedMethods()).use(router.routes());
 app.listen(9000, () => {
