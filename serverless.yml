@@ -11,7 +11,7 @@ inputs:
     framework: koa
     name: ${name}
     timeout: 30
-    memorySize: 128
+    memorySize: 64
   apigw:
     timeout: 60
     # ignoreUpdate: true
