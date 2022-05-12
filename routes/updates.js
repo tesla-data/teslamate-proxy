@@ -6,8 +6,9 @@ module.exports = async (ctx) => {
   const query = new Query(url, authorization);
   const ret = await query.cachedQuery(
     [updates.buildQuery(car_id)], from, to, car_id, '/updates',
-    (data) => data[data.length - 1] && data[data.length - 1].time || '0',
+    (data) => data[data.length - 2] && data[data.length - 2].time || '0',
     (data, ret) => {
+      ret.shift();
       data.pop();
       data.push(...ret);
       return data;
