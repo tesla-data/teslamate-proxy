@@ -13,6 +13,7 @@ function setRoute(method, path) {
 setRoute('post', '/query');
 setRoute('get', '/projected_range');
 setRoute('get', '/updates');
+setRoute('get', '/charges');
 setRoute('get', '/teslafi');
 
 app.use(cors()).use(bodyParser()).use(router.allowedMethods()).use(router.routes());
