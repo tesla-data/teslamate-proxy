@@ -1,4 +1,5 @@
 const Koa = require('koa');
+const cors = require('@koa/cors');
 const KoaRouter = require('koa-router');
 const bodyParser = require('koa-bodyparser');
 
@@ -10,9 +11,10 @@ function setRoute(method, path) {
 }
 
 setRoute('post', '/query');
+setRoute('get', '/projected_range');
 setRoute('get', '/teslafi');
 
-app.use(bodyParser()).use(router.allowedMethods()).use(router.routes());
+app.use(cors()).use(bodyParser()).use(router.allowedMethods()).use(router.routes());
 app.listen(9000, () => {
   console.log(`Server start on http://localhost:9000`);
 });
