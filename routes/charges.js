@@ -11,6 +11,7 @@ module.exports = async (ctx) => {
       data.shift();
       data.unshift(...ret);
       return data;
-    }
+    },
+    'v1'
   );
 };
