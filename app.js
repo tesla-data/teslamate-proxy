@@ -11,6 +11,7 @@ function setRoute(method, path) {
 }
 
 setRoute('post', '/query');
+setRoute('get', '/home_data');
 setRoute('get', '/projected_range');
 setRoute('get', '/updates');
 setRoute('get', '/charges');
