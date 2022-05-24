@@ -17,6 +17,7 @@ setRoute('get', '/updates');
 setRoute('get', '/charges');
 setRoute('get', '/teslafi');
 setRoute('get', '/positions');
+setRoute('get', '/drives');
 
 app.use(cors()).use(bodyParser()).use(router.allowedMethods()).use(router.routes());
 app.listen(9000, () => {
