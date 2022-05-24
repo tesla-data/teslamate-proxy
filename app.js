@@ -16,6 +16,7 @@ setRoute('get', '/projected_range');
 setRoute('get', '/updates');
 setRoute('get', '/charges');
 setRoute('get', '/teslafi');
+setRoute('get', '/positions');
 
 app.use(cors()).use(bodyParser()).use(router.allowedMethods()).use(router.routes());
 app.listen(9000, () => {
