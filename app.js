@@ -15,6 +15,7 @@ setRoute('get', '/home_data');
 setRoute('get', '/projected_range');
 setRoute('get', '/updates');
 setRoute('get', '/charges');
+setRoute('get', '/charge_detail');
 setRoute('get', '/teslafi');
 setRoute('get', '/positions');
 setRoute('get', '/drives');
