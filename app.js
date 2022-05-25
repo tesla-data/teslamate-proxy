@@ -23,6 +23,9 @@ setRoute('get', '/drive_detail');
 setRoute('get', '/stats');
 setRoute('get', '/stats_detail');
 
+setRoute('get', '/share/get');
+setRoute('get', '/share/drive');
+
 app.use(cors()).use(bodyParser()).use(router.allowedMethods()).use(router.routes());
 app.listen(9000, () => {
   console.log(`Server start on http://localhost:9000`);
