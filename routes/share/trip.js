@@ -9,6 +9,11 @@ const { saveDrive } = require('./drive');
 
 module.exports = async (ctx) => {
   const { header: { authorization }, query: { url, car_id, from, to } } = ctx;
+  if (to - from > 1000 * 60 * 60 * 24 * 7) {
+    ctx.body = { error: 'Too long period' };
+    return ;
+  }
+
   const jsonFile = new JsonFile('/share/trip', url + authorization, `${car_id}_${from}_${to}`);
 
   if (!jsonFile.exists() || to > Date.now()) {
