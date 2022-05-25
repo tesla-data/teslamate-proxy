@@ -3,8 +3,7 @@ const Query = require('../../lib/Query');
 const driveDetail = require('../../lib/drive/detail');
 const position = require('../../lib/position');
 
-module.exports = async (ctx) => {
-  const { header: { authorization }, query: { url, drive_id } } = ctx;
+async function saveDrive({ authorization, url, drive_id }) {
   const jsonFile = new JsonFile('/share/drive', url + authorization, drive_id);
 
   if (!jsonFile.exists()) {
@@ -15,6 +14,14 @@ module.exports = async (ctx) => {
     jsonFile.save({ drive, positions });
   }
 
-  const { hash } = jsonFile;
+  return jsonFile;
+}
+
+module.exports = async (ctx) => {
+  const { header: { authorization }, query: { url, drive_id } } = ctx;
+
+  const { hash } = await saveDrive({ authorization, url, drive_id });
   ctx.body = { path: '/share/drive', hash, id: drive_id };
 };
+
+module.exports.saveDrive = saveDrive;

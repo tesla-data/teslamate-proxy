@@ -3,8 +3,7 @@ const Query = require('../../lib/Query');
 const charges = require('../../lib/charges');
 const chargeDetail = require('../../lib/chargeDetail');
 
-module.exports = async (ctx) => {
-  const { header: { authorization }, query: { url, car_id, charge_id } } = ctx;
+async function saveCharge({ authorization, url, car_id, charge_id }) {
   const jsonFile = new JsonFile('/share/charge', url + authorization, charge_id);
 
   if (!jsonFile.exists()) {
@@ -14,6 +13,13 @@ module.exports = async (ctx) => {
     jsonFile.save({ detail, charge });
   }
 
-  const { hash } = jsonFile;
-  ctx.body = { path: '/share/drive', hash, id: charge_id };
+  return jsonFile;
+}
+
+module.exports = async (ctx) => {
+  const { header: { authorization }, query: { url, car_id, charge_id } } = ctx;
+  const { hash, id } = await saveCharge({ authorization, url, car_id, charge_id });
+  ctx.body = { path: '/share/charge', hash, id };
 };
+
+module.exports.saveCharge = saveCharge;
