@@ -25,6 +25,7 @@ setRoute('get', '/stats_detail');
 
 setRoute('get', '/share/get');
 setRoute('get', '/share/drive');
+setRoute('get', '/share/charge');
 
 app.use(cors()).use(bodyParser()).use(router.allowedMethods()).use(router.routes());
 app.listen(9000, () => {
