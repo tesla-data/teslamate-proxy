@@ -24,6 +24,7 @@ setRoute('get', '/stats');
 setRoute('get', '/stats_detail');
 
 setRoute('get', '/share/get');
+setRoute('get', '/share/trip');
 setRoute('get', '/share/drive');
 setRoute('get', '/share/charge');
 
