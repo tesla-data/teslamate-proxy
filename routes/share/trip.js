@@ -16,7 +16,7 @@ module.exports = async (ctx) => {
 
   const jsonFile = new JsonFile('/share/trip', url + authorization, `${car_id}_${from}_${to}`);
 
-  if (!jsonFile.exists() || to > Date.now()) {
+  if (!jsonFile.exists() || jsonFile.load().version !== 'v1' || to > Date.now()) {
     const query = new Query(url, authorization);
     const [drives, charges, positions] = await query.execute([
         drivesQ.buildQuery(car_id),
@@ -34,7 +34,7 @@ module.exports = async (ctx) => {
       await saveDrive({ authorization, url, drive_id: d.drive_id });
     }
 
-    jsonFile.save({ drives, charges, positions });
+    jsonFile.save({ drives, charges, positions, version: 'v1' });
   }
 
   const { hash, id } = jsonFile;
