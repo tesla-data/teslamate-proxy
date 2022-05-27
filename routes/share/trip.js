@@ -7,6 +7,8 @@ const position = require('../../lib/position');
 const { saveCharge } = require('./charge');
 const { saveDrive } = require('./drive');
 
+const version = 'v2'
+
 module.exports = async (ctx) => {
   const { header: { authorization }, query: { url, car_id, from, to } } = ctx;
   if (to - from > 1000 * 60 * 60 * 24 * 7) {
@@ -16,7 +18,7 @@ module.exports = async (ctx) => {
 
   const jsonFile = new JsonFile('/share/trip', url + authorization, `${car_id}_${from}_${to}`);
 
-  if (!jsonFile.exists() || jsonFile.load().version !== 'v1' || to > Date.now()) {
+  if (!jsonFile.exists() || jsonFile.load().version !== version || to > Date.now()) {
     const query = new Query(url, authorization);
     const [drives, charges, positions] = await query.execute([
         drivesQ.buildQuery(car_id),
@@ -34,7 +36,7 @@ module.exports = async (ctx) => {
       await saveDrive({ authorization, url, drive_id: d.drive_id });
     }
 
-    jsonFile.save({ drives, charges, positions, version: 'v1' });
+    jsonFile.save({ drives, charges, positions, version });
   }
 
   const { hash, id } = jsonFile;
