@@ -10,6 +10,7 @@ function setRoute(method, path) {
   router[method](path, require(`./routes${path}`));
 }
 
+setRoute('get', '/list_vehicles');
 setRoute('post', '/query');
 setRoute('get', '/home_data');
 setRoute('get', '/projected_range');
