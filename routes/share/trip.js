@@ -7,7 +7,7 @@ const position = require('../../lib/position');
 const { saveCharge } = require('./charge');
 const { saveDrive } = require('./drive');
 
-const version = 'v2'
+const version = 'v3'
 
 module.exports = async (ctx) => {
   const { header: { authorization }, query: { url, car_id, from, to } } = ctx;
