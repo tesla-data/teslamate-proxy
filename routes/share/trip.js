@@ -28,8 +28,26 @@ module.exports = async (ctx) => {
       from, to
     );
 
-    for (const c of charges) {
-      await saveCharge({ authorization, url, car_id, charge_id: c.id });
+    const mergedCharges = charges.reduce((arr, v) => {
+      const last = arr[arr.length - 1]
+      if (last &&
+          last.address === v.address && last.car_id === v.car_id && last.mode === v.mode &&
+          last.latitude === v.latitude && last.longitude === v.longitude &&
+          v.end_date_ts + 10 * 60 * 1000 < last.start_date_ts
+      ) {
+        last.duration_min += v.duration_min
+        last.charge_energy_added += v.charge_energy_added
+        last.start_date = v.start_date
+        last.start_date_ts = v.start_date_ts
+      } else {
+        arr.push(v)
+      }
+
+      return arr
+    }, [])
+    
+    for (const c of mergedCharges) {
+      await saveCharge({ authorization, url, car_id, charge_id: c.id, from: c.start_date_ts, to: c.end_date_ts });
     }
 
     for (const d of drives) {
