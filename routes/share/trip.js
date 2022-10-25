@@ -54,7 +54,7 @@ module.exports = async (ctx) => {
       await saveDrive({ authorization, url, drive_id: d.drive_id });
     }
 
-    jsonFile.save({ drives, charges, positions, version });
+    jsonFile.save({ drives, charges: mergedCharges, positions, version });
   }
 
   const { hash, id } = jsonFile;
