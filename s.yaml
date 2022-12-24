@@ -12,13 +12,16 @@ vars:
 services:
   framework:
     component: fc
+    actions:
+      post-deploy:
+        - run: echo finished...
     props:
       region: ${vars.region}
       service: ${vars.service}
       function:
         name: ${vars.functionName}
-        description: teslamate proxy
-        codeUri: ./
+        description: 'teslamate proxy'
+        codeUri: './'
         runtime: custom
         timeout: 60
         caPort: 9000
