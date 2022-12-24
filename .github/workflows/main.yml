@@ -13,7 +13,7 @@ jobs:
       - name: clone local repository
         uses: actions/checkout@v2
       - name: install dependency
-        run: npm install
+        run: npm install --omit=dev
       - name: install serverless-dev
         run: npm install -g @serverless-devs/s
       - name: serverless-dev deploy
