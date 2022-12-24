@@ -12,17 +12,11 @@ jobs:
     steps:
       - name: clone local repository
         uses: actions/checkout@v2
-      - name: install serverless
-        run: npm install -g serverless
       - name: install dependency
         run: npm install
-      # - name: build
-      #   run: npm build
-      - name: deploy serverless
-        run: sls deploy --debug
-        env: # 环境变量
-          STAGE: prod #您的部署环境
-          SERVERLESS_PLATFORM_VENDOR: tencent #serverless 境外默认为 aws，配置为腾讯
-          TENCENT_SECRET_ID: ${{ secrets.TENCENT_SECRET_ID }} #您的腾讯云账号 sercret ID
-          TENCENT_SECRET_KEY: ${{ secrets.TENCENT_SECRET_KEY }} #您的腾讯云账号 sercret key
- 
+      - name: install serverless-dev
+        run: npm install -g @serverless-devs/s
+      - name: config serverless-dev
+        run: s config add --AccessKeyID ${{secrets.ALI_KEY_ID}} --AccessKeySecret ${{secrets.ALI_SECRET_KEY}} -a default -f
+      - name: deploy serverless-dev
+        run: s deploy -y --use-remote 
