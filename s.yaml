@@ -12,9 +12,6 @@ vars:
 services:
   framework:
     component: fc
-    actions:
-      post-deploy:
-        - run: echo finished...
     props:
       region: ${vars.region}
       service: ${vars.service}
