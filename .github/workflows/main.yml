@@ -16,7 +16,6 @@ jobs:
         run: npm install
       - name: install serverless-dev
         run: npm install -g @serverless-devs/s
-      - name: config serverless-dev
+      - name: serverless-dev deploy
         run: s config add --AccessKeyID ${{secrets.ALI_KEY_ID}} --AccessKeySecret ${{secrets.ALI_SECRET_KEY}} -a default -f
-      - name: deploy serverless-dev
-        run: s deploy -y --use-remote 
+      - run: s deploy -y --use-remote
