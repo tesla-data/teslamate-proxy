@@ -1,0 +1,44 @@
+edition: 1.0.0
+name: web-framework-app
+access: "default"
+
+vars:
+  region: "cn-beijing"
+  functionName: "teslamate-proxy"
+  service:
+    name: "teslamate-proxy"
+    description: "teslamate-proxy"
+
+services:
+  framework:
+    component: fc
+    actions:
+      pre-deploy:
+        - run: npm install --production
+          path: ./
+    props:
+      region: ${vars.region}
+      service: ${vars.service}
+      function:
+        name: ${vars.functionName}
+        description: 'teslamate proxy'
+        codeUri: './'
+        runtime: custom
+        timeout: 60
+        caPort: 9000
+        customRuntimeConfig:
+          command:
+            - node
+            - app.js
+      triggers:
+        - name: httpTrigger
+          type: http
+          config:
+            authType: anonymous
+            methods:
+              - GET
+      customDomains:
+        - domainName: auto
+          protocol: HTTP
+          routeConfigs:
+            - path: '/*'
