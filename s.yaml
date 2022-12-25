@@ -22,6 +22,11 @@ services:
         runtime: custom
         timeout: 60
         caPort: 9000
+        layers:
+          - acs:fc:cn-beijing:official:layers/Nodejs16/versions/1
+        environmentVariables: 
+          NODE_PATH: /opt/nodejs/node_modules
+          PATH:      /opt/nodejs16/bin::/usr/local/bin/apache-maven/bin:/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/ruby/bin:/opt/bin          
         customRuntimeConfig:
           command:
             - node
