@@ -19,4 +19,4 @@ jobs:
       - name: serverless-dev deploy
         run: |
           s config add --AccessKeyID ${{secrets.ALI_KEY_ID}} --AccessKeySecret ${{secrets.ALI_SECRET_KEY}} -a default -f &&
-          s deploy function -y --use-remote --type code
+          s deploy function -y --use-local --type code
