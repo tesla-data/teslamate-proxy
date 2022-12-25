@@ -23,7 +23,7 @@
   "homepage": "https://github.com/tesla-data/teslamate-proxy#readme",
   "dependencies": {
     "@koa/cors": "^4.0.0",
-    "axios": "^1.2.1",
+    "axios": "^0.27.2",
     "koa": "^2.14.1",
     "koa-bodyparser": "^4.3.0",
     "koa-gzip": "^0.1.0",

@@ -17,7 +17,7 @@ jobs:
         run: npm install --omit=dev
       - name: install serverless-dev
         timeout-minutes: 5
-        run: npm install -g @serverless-devs/s@2.1.5
+        run: npm install -g @serverless-devs/s
       - name: serverless-dev deploy
         timeout-minutes: 5
         run: |
