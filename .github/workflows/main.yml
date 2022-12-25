@@ -13,13 +13,10 @@ jobs:
       - name: clone local repository
         uses: actions/checkout@v2
       - name: install dependency
-        timeout-minutes: 5
         run: npm install --omit=dev
       - name: install serverless-dev
-        timeout-minutes: 5
         run: npm install -g @serverless-devs/s
       - name: serverless-dev deploy
-        timeout-minutes: 5
         run: |
           s config add --AccessKeyID ${{secrets.ALI_KEY_ID}} --AccessKeySecret ${{secrets.ALI_SECRET_KEY}} -a default -f &&
           s deploy -y --use-remote
