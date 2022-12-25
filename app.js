@@ -1,4 +1,5 @@
 const Koa = require('koa');
+const gzip = require('koa-gzip');
 const cors = require('@koa/cors');
 const KoaRouter = require('koa-router');
 const bodyParser = require('koa-bodyparser');
@@ -29,7 +30,7 @@ setRoute('get', '/share/trip');
 setRoute('get', '/share/drive');
 setRoute('get', '/share/charge');
 
-app.use(cors()).use(bodyParser()).use(router.allowedMethods()).use(router.routes());
+app.use(gzip()).use(cors()).use(bodyParser()).use(router.allowedMethods()).use(router.routes());
 app.listen(9000, () => {
   console.log(`Server start on http://localhost:9000`);
 });
