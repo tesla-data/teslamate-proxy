@@ -11,6 +11,8 @@ function setRoute(method, path) {
   router[method](path, require(`./routes${path}`));
 }
 
+router.get('/j/:id', require('./routes/short_url'));
+
 setRoute('get', '/list_vehicles');
 setRoute('post', '/query');
 setRoute('get', '/home_data');
